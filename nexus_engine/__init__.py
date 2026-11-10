@@ -13,7 +13,7 @@ import logging
 from abc import ABC, abstractmethod
 from typing import Any
 
-__version__ = "0.2.0"
+__version__ = "0.2.1"
 log = logging.getLogger("nexus_engine")
 
 # -----------------------------------------------------------------------------

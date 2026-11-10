@@ -1,14 +1,19 @@
 """System-wide default constants and architectural configurations for Nexus-Kernel."""
 from __future__ import annotations
 
+import os
+from pathlib import Path
+
 # Application Version
-VERSION = "0.3.0"
+VERSION = "0.2.1"
 
 # Storage & Database Paths
-from pathlib import Path
-_REPO_ROOT = Path(__file__).resolve().parents[2]
-DEFAULT_AUDIT_DB_PATH = str(_REPO_ROOT / "data" / "db" / "audit.db")
-DEFAULT_DATABASE_PATH = str(_REPO_ROOT / "data" / "db" / "nexus.db")
+# Relative paths (DB files, data/) resolve against PROJECT_ROOT: the NEXUS_ROOT env var if set, else the working
+# directory. Never the package's own location: a wheel installs into site-packages, and anchoring there put
+# databases inside the Python environment.
+PROJECT_ROOT = Path(os.environ.get("NEXUS_ROOT") or Path.cwd()).resolve()
+DEFAULT_AUDIT_DB_PATH = str(PROJECT_ROOT / "data" / "db" / "audit.db")
+DEFAULT_DATABASE_PATH = str(PROJECT_ROOT / "data" / "db" / "nexus.db")
 
 # Server & Networking
 DEFAULT_BACKEND_HOST = "127.0.0.1"

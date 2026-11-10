@@ -242,7 +242,7 @@ class Embedder:
         url = f"{GEMINI_BASE_URL}/models/{model}:batchEmbedContents"
         headers = {
             "Content-Type": "application/json",
-            "User-Agent": "NexusEngine/0.3.0",
+            "User-Agent": "NexusEngine/0.2.1",
             "x-goog-api-key": cfg.api_key,  # header, never the URL (keys leak into logs/proxies)
         }
         results: list[np.ndarray] = []
@@ -293,7 +293,7 @@ class Embedder:
             req = urllib.request.Request(
                 self.config.url,
                 data=body,
-                headers={"Content-Type": "application/json", "User-Agent": "NexusEngine/0.3.0"},
+                headers={"Content-Type": "application/json", "User-Agent": "NexusEngine/0.2.1"},
                 method="POST",
             )
             with urllib.request.urlopen(req, timeout=self.config.local_timeout_s) as resp:

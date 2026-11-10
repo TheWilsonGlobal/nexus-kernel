@@ -1,10 +1,10 @@
 [build-system]
-requires = ["setuptools>=68", "wheel"]
+requires = ["setuptools>=77", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "nexus-kernel"
-version = "0.2.0"
+version = "0.2.1"
 description = "Enterprise agentic platform kernel: ReAct agent, dual-process guardrail, hybrid graph-vector retrieval, tiered memory, and sandbox."
 readme = "README.md"
 license = "Apache-2.0"

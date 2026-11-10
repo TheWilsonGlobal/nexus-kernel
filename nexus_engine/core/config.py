@@ -14,9 +14,8 @@ try:
 except ImportError:
     pass
 
-_REPO_ROOT = Path(__file__).resolve().parents[2]
-
 from nexus_engine.core.constants import (
+    PROJECT_ROOT,
     DEFAULT_AUDIT_DB_PATH,
     DEFAULT_AUTH_SESSION_IDLE_S,
     DEFAULT_AUTH_SESSION_TTL_S,
@@ -149,9 +148,9 @@ class Settings:
 
     def __post_init__(self) -> None:
         if not Path(self.database_path).is_absolute():
-            object.__setattr__(self, "database_path", str(_REPO_ROOT / self.database_path))
+            object.__setattr__(self, "database_path", str(PROJECT_ROOT / self.database_path))
         if not Path(self.audit_db_path).is_absolute():
-            object.__setattr__(self, "audit_db_path", str(_REPO_ROOT / self.audit_db_path))
+            object.__setattr__(self, "audit_db_path", str(PROJECT_ROOT / self.audit_db_path))
 
     @classmethod
     def from_env(cls) -> "Settings":

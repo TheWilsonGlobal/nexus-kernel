@@ -10,8 +10,8 @@ from typing import Any
 
 log = logging.getLogger(__name__)
 
-# Resolution paths for project data:
-_REPO_ROOT = Path(__file__).resolve().parents[2]
+# Resolution paths for project data (see PROJECT_ROOT in constants.py).
+from nexus_engine.core.constants import PROJECT_ROOT
 
 
 def get_data_dir() -> Path:
@@ -23,7 +23,7 @@ def get_data_dir() -> Path:
     cwd_data = Path.cwd() / "data"
     if (cwd_data / "corpus").is_dir():
         return cwd_data
-    repo_data = _REPO_ROOT / "data"
+    repo_data = PROJECT_ROOT / "data"
     if repo_data.is_dir():
         return repo_data
     return cwd_data
